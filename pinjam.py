@@ -3,17 +3,19 @@ from sqlalchemy import select
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import Session
 from sqlalchemy.engine import Engine
+from anggota import ModelAnggota
+from buku import ModelBuku
 
 # Declarative base yang akan di-inherit oleh setiap model
 Base = declarative_base()
 
 
-class PinjamanModel(Base):
+class ModelPinjam(Base):
 
     __tablename__ = 'tpinjaman'
     KodePinjam = Column(Integer, primary_key=True)
-    KodeBuku = Column(Integer, ForeignKey("tbuku.KodeBuku"), nullable=False)
-    NIM = Column(Integer, ForeignKey("tanggota.NIM"), nullable=False)
+    KodeBuku = Column(Integer, ForeignKey(ModelBuku.KodeBuku), nullable=False)
+    NIM = Column(Integer, ForeignKey(ModelAnggota.NIM), nullable=False)
     TglPinjam = Column(String(20), nullable=False)
 
     def __init__(self, KodePinjam, KodeBuku, NIM, TglPinjam):
@@ -27,18 +29,18 @@ class PinjamanModel(Base):
                (self.kodePinjam, self.kodeBuku, self.nim, self.tanggalPinjam)
 
 
-class Pinjam_CRUD:
+class CRUD_Pinjam:
     def __init__(self, engine: Engine):
         self.engine = engine
 
-    def create(self, pinjam: PinjamanModel):
+    def create(self, pinjam: ModelPinjam):
         with Session(self.engine) as session:
             session.add(pinjam)
             session.commit()
 
-    def update(self, kode_pinjam, newPinjaman: PinjamanModel):
+    def update(self, kode_pinjam, newPinjaman: ModelPinjam):
         with Session(self.engine) as session:
-            the_pinjaman: PinjamanModel = self.read_one(kode_pinjam)
+            the_pinjaman: ModelPinjam = self.read_one(kode_pinjam)
             the_pinjaman.kodeBuku = newPinjaman.kodeBuku
             the_pinjaman.nim = newPinjaman.nim
             the_pinjaman.tanggalPinjam = newPinjaman.tanggalPinjam
@@ -53,9 +55,9 @@ class Pinjam_CRUD:
 
     def read(self):
         with Session(self.engine) as session:
-            return session.query(PinjamanModel)
+            return session.query(ModelPinjam)
 
-    def read_one(self, kode_pinjam):
+    def read_one(self, KodePinjam):
         with Session(self.engine) as session:
-            stmt = select(PinjamanModel).where(PinjamanModel.kodePinjam == kode_pinjam)
+            stmt = select(ModelPinjam).where(ModelPinjam.kodePinjam == KodePinjam)
             return session.scalars(stmt).one()

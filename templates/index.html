@@ -16,7 +16,7 @@
   <body>
     <header>
         <div class="logo">
-            <h1 class="logo-wa">GERRY<span></h1>
+            <h1 class="logo-wa"><span>Gerry</span></h1>
         </div>
         <ul class="nav">
             <li>
@@ -80,27 +80,16 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th class="text-center">0001</th>
-                                <td class="text-center">Miskin Itu Privilege</td>
-                                <td class="text-center">22</td>
+                                <th class="text-center">{{bukuKodeBuku}}</th>
+                                <td class="text-center">{{buku.NamaBuku}}</td>
+                                <td class="text-center">{{buku.Stok}}</td>
                                 <td class="text-center">
-                                    <a href=""><button type="button" class="btn btn-secondary">Edit</button></a>
+                                    <a href=""><i class="bi bi-trash-fill"></i></a>
                                 </td>
                                 <td class="text-center">
-                                    <a href=""><button type="button" class="btn btn-danger">Hapus</button></i></a>
+                                    <a href=""><i class="bi bi-pencil-fill"></i></a>
                                 </td>
-                            </tr>
-                            <tr>
-                                <th class="text-center">0002</th>
-                                <td class="text-center">Membaca Pikiran Orang Lain</td>
-                                <td class="text-center">25</td>
-                                <td class="text-center">
-                                    <a href=""><button type="button" class="btn btn-secondary">Edit</button></a>
-                                </td>
-                                <td class="text-center">
-                                    <a href=""><button type="button" class="btn btn-danger">Hapus</button></i></a>
-                                </td>
-                            </tr>
+                            </tr>{%endfor%}
                         </tbody>
                     </table>
                 </div>
