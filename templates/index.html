@@ -62,11 +62,10 @@
         </div>
         <!-- RIGHT CONTENT -->
         <div class="rightside-content">
-
             <div class="content">
                 <div class="main-header">
                   <h2 class="page-title">Tabel Buku</h2>
-                  <button type="button" class="btn btn-primary">Tambah Buku</button>
+                  <button type="button" class="btn btn-primary"><a href="tambahbuku.html">Tambah Buku</a></button>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-light">
@@ -79,7 +78,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr>{%for buku in container%}
                                 <th class="text-center">{{bukuKodeBuku}}</th>
                                 <td class="text-center">{{buku.NamaBuku}}</td>
                                 <td class="text-center">{{buku.Stok}}</td>
@@ -110,3 +109,4 @@
     -->
   </body>
 </html>
+

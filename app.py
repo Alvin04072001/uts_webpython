@@ -19,9 +19,17 @@ kembali = CRUD_Kembali(engine)
 def index():
         return render_template('index.html', container= buku.read())
 
-@app.route("/anggota")
-def index():
-        return render_template('anggota.html', container= anggota.read())
+@app.route('/tambahbuku', methods=['GET', 'POST'])
+def tambahbuku():
+        if request.method == 'POST':
+                KodeBuku = request.form['KodeBuku']
+                Judul = request.form['Judul']
+                Stok = request.form['Stok']
+                buku = ModelBuku(KodeBuku, Judul, Stok)
+                Base.session.add(buku)
+                Base.session.commit()
+                return redirect(url_for('index'))
+        return render_template('dataanggota.html', container= anggota.read())
 
 if __name__ == '__main__':
         app.run(debug=True)

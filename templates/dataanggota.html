@@ -5,6 +5,33 @@
     <title>Data Anggota</title>
 </head>
 <body>
-
+<div class="table-responsive">
+                    <table class="table table-light">
+                        <thead>
+                            <tr class="table-dark ">
+                                <th class="text-center">Kode Buku</th>
+                                <th class="text-center">Judul Buku</th>
+                                <th class="text-center">Stock</th>
+                                <th colspan="2" class="text-center">Kontrol</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>{%for anggota in container%}
+                                <th class="text-center">{{anggota.NIM}}</th>
+                                <td class="text-center">{{anggota.NamaMhs}}</td>
+                                <td class="text-center">{{anggota.Jurusan}}</td>
+                                <td class="text-center">
+                                    <a href=""><i class="bi bi-trash-fill"></i></a>
+                                </td>
+                                <td class="text-center">
+                                    <a href=""><i class="bi bi-pencil-fill"></i></a>
+                                </td>
+                            </tr>{%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
