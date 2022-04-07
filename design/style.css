@@ -3,8 +3,8 @@ body{
 }
 main{
     background-color: white;
+    margin: 5% 37% 3% 37%;
     border-radius: 20px;
-    margin: 5% 32% 3% 32%;
     padding: 3%;
 }
 h1 {
@@ -26,6 +26,21 @@ label{
   padding: 5%;
 }
 
+select, option {
+    width: 250px;
+}
+
+option {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+input {
+   width: 250px;
+}
+
+
 .btn-primary{
   border-radius: 60px;
   padding: 0.3rem 5rem 0.3rem 5rem;
@@ -36,16 +51,4 @@ label{
 
 .btn-primary:hover{
   background-color: #165a91;
-}
-
-.back a{
-  text-decoration: none;
-  color: red;
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-}
-
-.back i {
-  color: red;
 }
