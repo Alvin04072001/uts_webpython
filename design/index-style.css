@@ -100,6 +100,14 @@ i{
   padding: 0px 1.5rem 0px 1.5rem;
 }
 
+.btn-secondary{
+  padding: 0.3rem 1.8rem 0.3rem 1.8rem;
+}
+
+.btn-danger{
+  padding: 0.3rem 1.2rem 0.3rem 1.2rem;
+}
+
 .btn-primary:hover{
   background-color: #47cc2f;
 }
