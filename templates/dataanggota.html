@@ -86,17 +86,17 @@
                                   <button type="button" class="btn btn-primary">Edit</button>
                                 </td>
                             </tr>
-                              <!-- <tr>
-                                  <th class="text-center">0002</th>
-                                  <td class="text-center">Membaca Pikiran Orang Lain</td>
-                                  <td class="text-center">25</td>
+                              <tr>{% for anggota in container%}
+                                  <th class="text-center">{{anggota.NIM}}</th>
+                                  <td class="text-center">{{anggota.NamaMhs}}</td>
+                                  <td class="text-center">{{anggota.Jurusan}}</td>
                                   <td class="text-center">
                                       <a href=""><button type="button" class="btn btn-secondary">Edit</button></a>
                                   </td>
                                   <td class="text-center">
                                       <a href=""><button type="button" class="btn btn-danger">Hapus</button></i></a>
-                                  </td>
-                              </tr> -->
+                                  </td>{%endfor%}
+                              </tr>
                         </tbody>
                     </table>
                 </div>

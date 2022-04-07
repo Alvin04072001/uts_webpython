@@ -39,7 +39,7 @@
                 </a>
               </li>
                 <li>
-                  <a href="tambahanggota.html">
+                  <a href={{'dataanggota'}}>
                   <div class="left-navigation">
                     <i class="bi bi-people-fill"></i>
                     <p>Anggota</p>
@@ -62,11 +62,10 @@
         </div>
         <!-- RIGHT CONTENT -->
         <div class="rightside-content">
-
             <div class="content">
                 <div class="main-header">
                   <h2 class="page-title">Tabel Buku</h2>
-                  <button type="button" class="btn btn-primary">Tambah Buku</button>
+                  <button type="button" class="btn btn-primary"><a href="tambahbuku.html">Tambah Buku</a></button>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-light">
@@ -79,17 +78,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th class="text-center">{{bukuKodeBuku}}</th>
-                                <td class="text-center">{{buku.NamaBuku}}</td>
-                                <td class="text-center">{{buku.Stok}}</td>
-                                <td class="text-center">
-                                    <a href=""><i class="bi bi-trash-fill"></i></a>
-                                </td>
-                                <td class="text-center">
-                                    <a href=""><i class="bi bi-pencil-fill"></i></a>
-                                </td>
-                            </tr>{%endfor%}
+                            <tr>{% for buku in container%}
+                                  <th class="text-center">{{buku.KodeBuku}}</th>
+                                  <td class="text-center">{{buku.Judul}}</td>
+                                  <td class="text-center">{{buku.Stok}}</td>
+                                  <td class="text-center">
+                                      <a href=""><button type="button" class="btn btn-secondary">Edit</button></a>
+                                  </td>
+                                  <td class="text-center">
+                                      <a href=""><button type="button" class="btn btn-danger">Hapus</button></i></a>
+                                  </td>
+                              </tr>{%endfor%}
                         </tbody>
                     </table>
                 </div>
@@ -110,3 +109,4 @@
     -->
   </body>
 </html>
+
