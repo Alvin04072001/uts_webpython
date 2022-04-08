@@ -31,7 +31,7 @@
         <!-- LEFT SIDE -->
         <div class="leftside-wrapper">
             <ul>
-              <li><a href="">
+              <li><a href={{'index'}}>
                   <div class="left-navigation">
                     <i class="bi bi-book-half"></i>
                     <p>Buku</p>
@@ -39,14 +39,14 @@
                 </a>
               </li>
                 <li>
-                  <a href="tambahanggota.html">
+                  <a href="{{'dataanggota'}}">
                   <div class="left-navigation">
                     <i class="bi bi-people-fill"></i>
                     <p>Anggota</p>
                   </div>
               </a>
             </li>
-                <li><a href="pinjam_buku.html">
+                <li><a href={{'datapinjambuku'}}>
                   <div class="left-navigation">
                     <i class="bi bi-bookmark-plus-fill"></i>
                     <p>Pinjam Buku</p>
@@ -84,7 +84,7 @@
                                   <td class="text-center">{{anggota.NamaMhs}}</td>
                                   <td class="text-center">{{anggota.Jurusan}}</td>
                                   <td class="text-center">
-                                      <a href=""><button type="button" class="btn btn-secondary">Edit</button></a>
+                                      <button type="button" class="btn btn-secondary"><a href={{url_for('ubahdata', NIM = anggota.NIM)}}>Edit</a></button>
                                   </td>
                                   <td class="text-center">
                                       <a href="http://localhost:5000/hapusanggota/ {{anggota.NIM}}"><button type="button" class="btn btn-danger">Hapus</button></i></a>

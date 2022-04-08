@@ -14,15 +14,15 @@
   </div>
   <br>
   <h1><center>Daftar Anggota</center></h1><br>
-    <form action="url_for('update', nim={{ data[0] }})" method="post">
+    <form action="{{url_for('ubahdata')}}" method="post">
         <center>
             <label for="nim">NIM</label><br>
-            <input type="text" id="nim" name="nim" value="{{ data[0]}}"><br><br>
+            <input type="text" id="nim" name="nim" ><br><br>
             <label for="nama">Nama</label><br>
-            <input type="text" id="nama" name="nama" value="{{ data[1]}}"><br><br>
+            <input type="text" id="nama" name="namamhs"><br><br>
             <label for="nim">Jurusan</label><br>
-            <input type="text" id="jurusan" value="{{ data[2]}}"><br><br>
-            <button type="button" class="btn btn-primary"><a href="dataanggota.html">SUBMIT</a></button>
+            <input type="text" id="jurusan" name="jurusanmhs"><br><br>
+            <button type="submit" class="btn btn-primary">SUBMIT</button>
         </center>
     </form>
 </main>

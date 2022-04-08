@@ -10,21 +10,27 @@
 <body>
 <main>
   <div class="back">
-    <a href="index.html"><i class="bi bi-box-arrow-in-left"></i> Kembali</a>
+    <a href={{'datapinjambuku'}}><i class="bi bi-box-arrow-in-left"></i> Kembali</a>
   </div>
   <br>
   <h1><center>Pinjam Buku</center></h1><br>
-    <form action="/action_page.php">
+    <form action={{url_for('pinjambuku')}} method="post">
         <center>
+            <label for="kpinjam">KodePinjam</label><br>
+            <input type="text" id="kpinjam" name="kodepinjam"><br><br>
             <label for="nim">NIM</label><br>
-            <input type="text" id="nim" name="fname"><br><br>
+            <input type="text" id="nim" name="nim"><br><br>
             <label for="kodebuku">Kode Buku</label><br>
             <select id="kodebuku" name="kodebuku">
-              <option value="">Pilih Buku</option>
+              {% for buku in buku_list %}
+                {% if buku.Stok > 0 %}
+                <option label="{{ buku.KodeBuku }}" value="{{ buku.KodeBuku }}"></option>
+                {% endif %}
+                {% endfor %}
             </select><br><br>
             <label for="nim">Tanggal Pinjam</label><br>
             <input type="date" id="tanggal" name="tanggal"><br><br>
-            <button type="button" class="btn btn-primary"><a href="datapinjambuku.html">SUBMIT</a></button>
+            <button type="submit" class="btn btn-primary">SUBMIT</a></button>
         </center>
     </form>
 </main>

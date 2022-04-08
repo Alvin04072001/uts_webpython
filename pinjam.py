@@ -12,7 +12,7 @@ Base = declarative_base()
 
 class ModelPinjam(Base):
 
-    __tablename__ = 'tpinjaman'
+    __tablename__ = 'tpinjam'
     KodePinjam = Column(Integer, primary_key=True)
     KodeBuku = Column(Integer, ForeignKey(ModelBuku.KodeBuku), nullable=False)
     NIM = Column(Integer, ForeignKey(ModelAnggota.NIM), nullable=False)
