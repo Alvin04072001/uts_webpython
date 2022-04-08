@@ -19,13 +19,21 @@ kembali = CRUD_Kembali(engine)
 def index():
         return render_template('index.html', container= buku.read())
 
+@app.route('/tambahbuku', methods=['GET', 'POST'])
+def tambahbuku():
+        if request.method == 'POST':
+                KodeBuku = request.form['kbuku']
+                Judul = request.form['jbuku']
+                Stok = request.form['sbuku']
+                tambah = ModelBuku(KodeBuku, Judul, Stok)
+                buku.create(tambah)
+                return redirect(url_for("index"))
+        else:
+                return render_template('tambahbuku.html')
+
 @app.route('/dataanggota')
 def dataanggota():
         return render_template('dataanggota.html', container= anggota.read())
-
-# @app.route('/editanggota')
-# def editanggota():
-#         return render_template('editanggota.html', data= anggota.update())
 
 @app.route('/tambahanggota', methods= ['GET', 'POST'])
 def tambahanggota():
@@ -33,39 +41,11 @@ def tambahanggota():
                 NIM = request.form['nim']
                 NamaMhs = request.form['namamhs']
                 Jurusan = request.form['jurusanmhs']
-
                 tambah = ModelAnggota(NIM, NamaMhs, Jurusan)
                 anggota.create(tambah)
                 return redirect(url_for('index'))
         else:
                 return render_template('tambahanggota.html')
-
-
-# @app.route('/tambahbuku', methods=['GET', 'POST'])
-# def tambahbuku():
-#         if request.method == 'POST':
-#                 KodeBuku = request.form['KodeBuku']
-#                 Judul = request.form['Judul']
-#                 Stok = request.form['Stok']
-#                 buku = ModelBuku(KodeBuku, Judul, Stok)
-#                 Base.session.add(buku)
-#                 Base.session.commit()
-#                 return redirect(url_for('index'))
-#         else:
-#                 return render_template('index.html')
-#
-# @app.route('/tambahanggota', methods=['GET', 'POST'])
-# def tambahanggota():
-#         if request.method == 'POST':
-#                 NIM = request.form['NIM']
-#                 NamaMhs = request.form['NamaMhs']
-#                 Jurusan = request.form['Jurusan']
-#                 anggota = ModelAnggota(NIM, NamaMhs, Jurusan)
-#                 Base.session.add(anggota)
-#                 Base.session.commit()
-#                 return redirect(url_for('index'))
-#         else:
-#                 return render_template('dataanggota.html')
 
 if __name__ == '__main__':
         app.run(debug=True)
