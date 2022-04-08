@@ -79,13 +79,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- <tr>
-                                <th class="text-center"></th>
-                                <td class="text-center"></td>
-                                <td class="text-center"></td>
-                                <td class="text-center">
-                                </td>
-                            </tr> -->
                               <tr>{% for anggota in container%}
                                   <th class="text-center">{{anggota.NIM}}</th>
                                   <td class="text-center">{{anggota.NamaMhs}}</td>
@@ -94,7 +87,7 @@
                                       <a href=""><button type="button" class="btn btn-secondary">Edit</button></a>
                                   </td>
                                   <td class="text-center">
-                                      <a href=""><button type="button" class="btn btn-danger">Hapus</button></i></a>
+                                      <a href="http://localhost:5000/hapusanggota/ {{anggota.NIM}}"><button type="button" class="btn btn-danger">Hapus</button></i></a>
                                   </td>{%endfor%}
                               </tr>
                         </tbody>

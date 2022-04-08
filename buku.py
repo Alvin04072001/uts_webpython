@@ -45,8 +45,8 @@ class CRUD_Buku :
 
     def delete(self, KodeBuku):
         with Session(self.engine) as session:
-            the_buku = self.read_one(KodeBuku)
-            session.delete(the_buku)
+            buku = self.read_one(KodeBuku)
+            session.delete(buku)
             session.commit()
 
     def read_one(self, KodeBuku):

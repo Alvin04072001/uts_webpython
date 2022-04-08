@@ -19,7 +19,7 @@ kembali = CRUD_Kembali(engine)
 def index():
         return render_template('index.html', container= buku.read())
 
-@app.route('/tambahbuku', methods=['GET', 'POST'])
+@app.route('/tambahbuku', methods=['GET','POST'])
 def tambahbuku():
         if request.method == 'POST':
                 KodeBuku = request.form['kbuku']
@@ -27,9 +27,14 @@ def tambahbuku():
                 Stok = request.form['sbuku']
                 tambah = ModelBuku(KodeBuku, Judul, Stok)
                 buku.create(tambah)
-                return redirect(url_for("index"))
+                return redirect(url_for('index'))
         else:
                 return render_template('tambahbuku.html')
+
+@app.route('/hapusbuku/<KodeBuku>', methods=['GET','POST'])
+def hapusbuku(KodeBuku):
+        buku.delete(KodeBuku)
+        return redirect(url_for('index'))
 
 @app.route('/dataanggota')
 def dataanggota():
@@ -43,9 +48,14 @@ def tambahanggota():
                 Jurusan = request.form['jurusanmhs']
                 tambah = ModelAnggota(NIM, NamaMhs, Jurusan)
                 anggota.create(tambah)
-                return redirect(url_for('index'))
+                return redirect(url_for('dataanggota'))
         else:
                 return render_template('tambahanggota.html')
+
+@app.route('/hapusanggota/<NIM>', methods=['GET','POST'])
+def hapusanggota(NIM):
+        anggota.delete(NIM)
+        return redirect(url_for('dataanggota'))
 
 if __name__ == '__main__':
         app.run(debug=True)

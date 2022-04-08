@@ -45,8 +45,8 @@ class CRUD_Anggota:
 
     def delete(self, NIM):
         with Session(self.engine) as session:
-            the_anggota = self.read_one(NIM)
-            session.delete(the_anggota)
+            anggota = self.read_one(NIM)
+            session.delete(anggota)
             session.commit()
 
     def read_one(self, NIM):
