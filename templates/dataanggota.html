@@ -66,6 +66,7 @@
             <div class="content">
                 <div class="main-header">
                   <h2 class="page-title">Tabel Data Anggota</h2>
+                  <button type="button" class="btn btn-primary"><a href={{'tambahanggota'}}>Tambah Anggota</a></button>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-light">
@@ -78,14 +79,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <!-- <tr>
                                 <th class="text-center"></th>
                                 <td class="text-center"></td>
                                 <td class="text-center"></td>
                                 <td class="text-center">
-                                  <button type="button" class="btn btn-primary">Edit</button>
                                 </td>
-                            </tr>
+                            </tr> -->
                               <tr>{% for anggota in container%}
                                   <th class="text-center">{{anggota.NIM}}</th>
                                   <td class="text-center">{{anggota.NamaMhs}}</td>

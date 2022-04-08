@@ -23,6 +23,24 @@ def index():
 def dataanggota():
         return render_template('dataanggota.html', container= anggota.read())
 
+# @app.route('/editanggota')
+# def editanggota():
+#         return render_template('editanggota.html', data= anggota.update())
+
+@app.route('/tambahanggota', methods= ['GET', 'POST'])
+def tambahanggota():
+        if request.method == 'POST':
+                NIM = request.form['nim']
+                NamaMhs = request.form['namamhs']
+                Jurusan = request.form['jurusanmhs']
+
+                tambah = ModelAnggota(NIM, NamaMhs, Jurusan)
+                anggota.create(tambah)
+                return redirect(url_for('index'))
+        else:
+                return render_template('tambahanggota.html')
+
+
 # @app.route('/tambahbuku', methods=['GET', 'POST'])
 # def tambahbuku():
 #         if request.method == 'POST':
