@@ -6,6 +6,7 @@ from sqlalchemy.engine import Engine
 
 Base = declarative_base()
 
+# Inisialisasi kelas model anggota
 class ModelAnggota(Base):
 
     __tablename__ = 'tanggota'
@@ -21,7 +22,7 @@ class ModelAnggota(Base):
     def __repr__(self):
         return 'Anggota: {NIM: %d, NamaMhs: %s, Jurusan: %s}' % (self.NIM, self.NamaMhs, self.Jurusan)
 
-
+# Kelas prosedur metode CRUD
 class CRUD_Anggota:
     def __init__(self, engine: Engine):
         self.engine = engine
@@ -35,7 +36,7 @@ class CRUD_Anggota:
         with Session(self.engine) as session:
             return session.query(ModelAnggota)
 
-    def update(self, NIM, newAnggota: ModelAnggota):
+    def update(self, NIM, anggota: ModelAnggota):
         with Session(self.engine) as session:
             the_anggota: ModelAnggota = self.read_one(NIM)
             the_anggota.nama = newAnggota.NamaMhs
