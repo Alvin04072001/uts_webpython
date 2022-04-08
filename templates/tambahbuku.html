@@ -9,14 +9,14 @@
 <body>
 <main>
   <h1><center>Tambah Buku</center></h1>
-  <form action="{{url_for('tambah')}}" method='post'>
+  <form action="{{url_for('tambahbuku')}}" method='post'>
       <center>
           <label for="kodebuku">Kode Buku</label><br>
           <input type="text" id="kodebuku" name="kbuku"><br><br>
           <label for="judul">Judul Buku</label><br>
-          <input type="text " id="judul" name="kbuku"><br><br>
+          <input type="text " id="judul" name="jbuku"><br><br>
           <label for="stok">Stok</label><br>
-          <input type="number" min="1"id="stok"><br><br>
+          <input type="number" min="1"id="stok" name="sbuku"><br><br>
           <button type="submit" class="btn btn-primary">SUBMIT</button>
       </center>
   </form>
