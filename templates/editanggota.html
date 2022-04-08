@@ -5,24 +5,24 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>Pinjam Buku</title>
+    <title>Edit anggota</title>
 </head>
 <body>
 <main>
   <div class="back">
-    <a href="index.html"><i class="bi bi-box-arrow-in-left"></i> Kembali</a>
+    <a href="dataanggota.html"><i class="bi bi-box-arrow-in-left"></i> Kembali</a>
   </div>
   <br>
   <h1><center>Daftar Anggota</center></h1><br>
-    <form action="{{url_for('tambahanggota')}}" method="post">
+    <form action="url_for('update', nim={{ data[0] }})" method="post">
         <center>
             <label for="nim">NIM</label><br>
-            <input type="text" id="nim" name="nim"><br><br>
+            <input type="text" id="nim" name="nim" value="{{ data[0]}}"><br><br>
             <label for="nama">Nama</label><br>
-            <input type="text" id="nama" name="namamhs"><br><br>
+            <input type="text" id="nama" name="nama" value="{{ data[1]}}"><br><br>
             <label for="nim">Jurusan</label><br>
-            <input type="text" id="jurusan" name="jurusanmhs"><br><br>
-            <button type="submit" class="btn btn-primary">SUBMIT</button>
+            <input type="text" id="jurusan" value="{{ data[2]}}"><br><br>
+            <button type="button" class="btn btn-primary"><a href="dataanggota.html">SUBMIT</a></button>
         </center>
     </form>
 </main>
