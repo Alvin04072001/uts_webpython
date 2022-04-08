@@ -16,10 +16,12 @@ pinjam = CRUD_Pinjam(engine)
 kembali = CRUD_Kembali(engine)
 
 @app.route('/')
+# Menampilkan data buku
 def index():
         return render_template('index.html', container= buku.read())
 
 @app.route('/tambahbuku', methods=['GET','POST'])
+# Menambah data buku
 def tambahbuku():
         if request.method == 'POST':
                 KodeBuku = request.form['kbuku']
@@ -32,15 +34,18 @@ def tambahbuku():
                 return render_template('tambahbuku.html')
 
 @app.route('/hapusbuku/<KodeBuku>', methods=['GET','POST'])
+# Menghapus data buku
 def hapusbuku(KodeBuku):
         buku.delete(KodeBuku)
         return redirect(url_for('index'))
 
 @app.route('/dataanggota')
+# Menampilkan data anggota
 def dataanggota():
         return render_template('dataanggota.html', container= anggota.read())
 
 @app.route('/tambahanggota', methods= ['GET', 'POST'])
+# Menambah data anggota
 def tambahanggota():
         if request.method == 'POST':
                 NIM = request.form['nim']
@@ -53,9 +58,18 @@ def tambahanggota():
                 return render_template('tambahanggota.html')
 
 @app.route('/hapusanggota/<NIM>', methods=['GET','POST'])
+# Menghapus data anggota
 def hapusanggota(NIM):
         anggota.delete(NIM)
         return redirect(url_for('dataanggota'))
+
+@app.route('/dataanggota/ubahanggota/<NIM>', methods=['POST'])
+def ubahanggota(NIM):
+    the_anggota: ModelPinjam = CRUD_Anggota.read_one(NIM)
+    nim = request.form['nim']
+    the_anggota.NIM = nim
+    CRUD_Anggota.update(NIM, the_anggota)
+    return redirect(url_for('datapinjambuku'))
 
 if __name__ == '__main__':
         app.run(debug=True)
